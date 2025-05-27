@@ -4,8 +4,7 @@
   "description": "Products API using Hapi.js framework",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "dependencies": {
     "@hapi/hapi": "^21.3.2",

@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "c81a8250-cd48-4250-901b-763e1fcd0501",
+		"name": "ILT FEBE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33127789",
+		"_collection_link": "https://shiddiq-fathullah-workspace.postman.co/workspace/Team-Workspace~3c0a65df-b3c1-464c-8b60-a44b7cd42aba/collection/33127789-c81a8250-cd48-4250-901b-763e1fcd0501?action=share&source=collection_link&creator=33127789"
+	},
+	"item": [
+		{
+			"name": "Welcome",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Nike Air 1\",\r\n    \"description\": \"Sepatu Jalan\",\r\n    \"category\": \"Sepatu\",\r\n    \"price\": \"800000\",\r\n    \"brand\": \"Lokal\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Detail product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/0rIS2klhf_SAOmbn",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"0rIS2klhf_SAOmbn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/products/PO0d4PhNHkFK2_cV",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"products",
+						"PO0d4PhNHkFK2_cV"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
