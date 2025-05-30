@@ -1,86 +1,57 @@
+// handler.js - Modified for Native HTTP
 class ProductsHandler {
   constructor(service) {
     this._service = service;
-
-    this.welcome = this.welcome.bind(this);
-    this.addProductHandler = this.addProductHandler.bind(this);
-    this.getAllProductsHandler = this.getAllProductsHandler.bind(this);
-    this.getOneProductHandler = this.getOneProductHandler.bind(this);
-    this.deleteOneProductHandler = this.deleteOneProductHandler.bind(this);
   }
 
-  /**
- * @TODO 2
- * Define handler for post product handler
- */
-
-  async welcome(request, h) {
-    const response = h.response({
+  async welcome(req, res) {
+    res.status(200).json({
       status: 'success',
       message: 'Welcome to the Product API',
-      data: '',
+      data: null
     });
-
-    response.code(201);
-    return response;
   }
 
-  async addProductHandler(request, h) {
-    const { name = 'untitled', price, category } = request.payload;
+  async addProductHandler(req, res) {
+    const { name = 'untitled', price, category } = req.body;
     const productId = await this._service.addProduct({ name, price, category });
 
-    const response = h.response({
+    res.status(201).json({
       status: 'success',
       message: 'Product berhasil ditambahkan',
-      data: {
-        productId
-      },
+      data: { productId }
     });
-
-    response.code(201);
-    return response;
   }
 
-  async getAllProductsHandler(request, h) {
+  async getAllProductsHandler(req, res) {
     const products = await this._service.getAllProducts();
-    const response = h.response({
+    res.status(200).json({
       status: 'success',
       message: 'Product berhasil ditampilkan',
-      data: {
-        products
-      },
+      data: { products }
     });
-
-    response.code(201);
-    return response;
   }
 
-  async getOneProductHandler(request, h) {
-    const { id } = request.params;
+  async getOneProductHandler(req, res) {
+    const { id } = req.params;
     const product = await this._service.getOneProduct(id);
 
-    const response = h.response({
+    res.status(200).json({
       status: 'success',
       message: 'Product berhasil ditampilkan',
-      data: {
-        product
-      }
+      data: { product }
     });
-    response.code(200);
-    return response;
   }
 
-  async deleteOneProductHandler(request, h) {
-    const { id } = request.params;
+  async deleteOneProductHandler(req, res) {
+    const { id } = req.params;
     await this._service.deleteOneProduct(id);
 
-    const response = h.response({
+    res.status(200).json({
       status: 'success',
       message: 'Product berhasil dihapus',
-      data: { id },
+      data: { id }
     });
-    response.code(200);
-    return response;
   }
 }
 
